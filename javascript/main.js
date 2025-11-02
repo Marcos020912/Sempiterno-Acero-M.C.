@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle functionality
     const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('header nav');
+    const nav = document.querySelector('.main-header nav');
     
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', function() {
@@ -18,11 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('.main-header nav a');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
+                
+                // Remove active class from hamburger icons as well
+                const hamBurgers = menuToggle.querySelectorAll('.hamburger');
+                hamBurgers.forEach(hamburger => {
+                    hamburger.classList.remove('active');
+                });
             }
         });
     });

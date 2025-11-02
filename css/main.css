@@ -116,7 +116,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.8)), url('../assets/funnel-principal.png') center/cover;
+    background: linear-gradient(rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.8)), url('/assets/funnel-principal.png') center/cover;
     padding: 6rem 0;
     display: flex;
     align-items: center;
@@ -704,6 +704,43 @@ body {
     .main-footer {
         padding: 2rem 0 1rem;
     }
+    
+    /* Mobile menu toggle styles */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .main-header nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-header nav.active {
+        display: block;
+        margin-top: 1rem;
+    }
+    
+    .main-header nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .main-header nav ul li {
+        margin: 0.3rem 0;
+    }
+    
+    .hamburger.active:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
 
 /* Tablet responsive improvements */
@@ -728,7 +765,7 @@ body {
 }
 
 /* Mobile specific improvements */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .container {
         padding: 0 10px;
     }
@@ -855,5 +892,43 @@ body {
     
     .hamburger.active:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Separate smaller mobile styles */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    .company-name {
+        font-size: 1.3rem;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+        min-height: 45vh;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .about h2,
+    .services-preview h2,
+    .contact-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .history-paragraph {
+        font-size: 13px;
     }
 }
