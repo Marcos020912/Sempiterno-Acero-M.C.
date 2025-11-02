@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Sempiterno Acero M.C</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="../assets/logo.png" alt="Sempiterno Acero M.C Logo" class="logo-img">
+                <h1 class="company-name">Sempiterno Acero M.C</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="tagline">
+            <p>"Lo que tenemos viene de Dios, porque damos de gracia lo que de gracia Él nos da."</p>
+        </div>
+    </header>
+
+    <!-- Services Carousel Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <div class="carousel-item">
+                        <div class="service-card" style="background-image: url('../assets/moldes.jpg');">
+                            <div class="service-content">
+                                <h3>Moldes Metálicos</h3>
+                                <p>Para dulcerías, repostería, panadería y heladería. Fabricamos moldes de alta calidad
+                                    que
+                                    cumplen con las necesidades específicas de cada cliente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-card" style="background-image: url('../assets/mesas.jpg');">
+                            <div class="service-content">
+                                <h3>Mesas y Estructuras</h3>
+                                <p>Mesas metálicas, carros de bandeja y estructuras funcionales diseñadas para durar y
+                                    resistir condiciones exigentes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-card" style="background-image: url('../assets/ventilacion.jpg');">
+                            <div class="service-content">
+                                <h3>Conductos de Ventilación</h3>
+                                <p>Sistemas de ventilación personalizados para hogares y negocios, garantizando un
+                                    ambiente
+                                    cómodo y saludable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="service-card" style="background-image: url('../assets/estanterias.jpg');">
+                            <div class="service-content">
+                                <h3>Estanterías y Útiles</h3>
+                                <p>Soluciones de almacenamiento y organización para el hogar en metal de alta
+                                    resistencia y
+                                    durabilidad.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="moveToSlide(0)"></span>
+                <span class="indicator" onclick="moveToSlide(1)"></span>
+                <span class="indicator" onclick="moveToSlide(2)"></span>
+                <span class="indicator" onclick="moveToSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Sempiterno Acero Todos los derechos reservados.</p>
+            <p>"Lo que tenemos viene de Dios, porque damos de gracia lo que de gracia Él nos da."</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.carousel-container');
+            const indicators = document.querySelectorAll('.indicator');
+            const slideWidth = document.querySelector('.carousel-item').offsetWidth + 20; // Adding margin
+
+            currentSlide += direction;
+
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function moveToSlide(index) {
+            const carousel = document.querySelector('.carousel-container');
+            const indicators = document.querySelectorAll('.indicator');
+            const slideWidth = document.querySelector('.carousel-item').offsetWidth + 20; // Adding margin
+
+            currentSlide = index;
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize the first indicator as active
+        document.addEventListener('DOMContentLoaded', function () {
+            const indicators = document.querySelectorAll('.indicator');
+            if (indicators.length > 0) {
+                indicators[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

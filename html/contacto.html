@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos - Sempiterno Acero M.C.</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="../assets/logo.png" alt="Sempiterno Acero M.C. Logo" class="logo-img">
+                <h1 class="company-name">Sempiterno Acero M.C</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="tagline">
+            <p>"Lo que tenemos viene de Dios, porque damos de gracia lo que de gracia Él nos da."</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Datos de Contacto</h3>
+                    <div class="contact-details">
+                        <div class="contact-card">
+                            <h4>Taller</h4>
+                            <p>Calle D #67 Altos, entre 5ta y 6ta<br>
+                                Reparto Poey, Arroyo Naranjo<br>
+                                La Habana, Cuba</p>
+                        </div>
+                        <div class="contact-card">
+                            <h4>Horario</h4>
+                            <p>Lunes a viernes<br>
+                                8:00 a.m. – 4:00 p.m.</p>
+                        </div>
+                        <div class="contact-card">
+                            <h4>Contacto</h4>
+                            <p>Teléfono / WhatsApp: +53 5 1968472</p>
+                        </div>
+                    </div>
+
+                    <h3>Síguenos en Facebook</h3>
+                    <a href="https://www.facebook.com/profile.php?id=100068944186658" target="_blank"
+                        class="facebook-link">
+                        <span class="facebook-icon">f</span> Visitar Facebook
+                    </a>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje por WhatsApp</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre *</label>
+                            <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com (opcional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Número de teléfono (opcional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                        <button type="button" class="btn-submit" onclick="sendWhatsAppMessage()">Enviar por
+                            WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Sempiterno Acero M.C. Todos los derechos reservados.</p>
+            <p>"Lo que tenemos viene de Dios, porque damos de gracia lo que de gracia Él nos da."</p>
+        </div>
+    </footer>
+
+    <script src="../javascript/main.js"></script>
+    <script>
+        function sendWhatsAppMessage() {
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Validate required fields
+            if (!name || !message) {
+                alert('Por favor, completa todos los campos obligatorios (*).');
+                return;
+            }
+
+            // Construct WhatsApp message
+            let whatsappMessage = `Hola desde el sitio web de Sempiterno Acero M.C!\n`;
+            whatsappMessage += `Nombre: ${name}\n`;
+            whatsappMessage += `Email: ${email}\n`;
+
+            if (phone) {
+                whatsappMessage += `Teléfono: ${phone}\n`;
+            }
+
+            whatsappMessage += `\nMensaje:\n${message}`;
+
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // WhatsApp API URL with the target number
+            const whatsappUrl = `https://wa.me/5351968472?text=${encodedMessage}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+
+</html>
