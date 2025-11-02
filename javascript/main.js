@@ -1,10 +1,33 @@
 // JavaScript para funcionalidad básica del sitio web Sempiterno Acero M.C.
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Agregar funcionalidad para menú móvil si es necesario en el futuro
-    const navLinks = document.querySelectorAll('nav a');
+    // Mobile menu toggle functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('header nav');
     
-    // Agregar efecto hover a los elementos interactivos
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            
+            // Animate hamburger icon
+            const hamBurgers = menuToggle.querySelectorAll('.hamburger');
+            hamBurgers.forEach(hamburger => {
+                hamburger.classList.toggle('active');
+            });
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        });
+    });
+    
+    // Add hover effect to interactive elements
     const interactiveElements = document.querySelectorAll('.about-card, .service-item, .contact-card');
     
     interactiveElements.forEach(element => {
@@ -17,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Funcionalidad para scroll suave a secciones
+    // Smooth scroll functionality to sections
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
